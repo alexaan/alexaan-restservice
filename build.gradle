@@ -15,6 +15,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'jetty'
 
 mainClassName = 'src.java.hello.App'
 
@@ -46,6 +47,16 @@ dependencies {
     // monitoring on Heroku
     runtimeOnly "com.newrelic.agent.java:newrelic-agent:2.18.0"
 
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile ('org.eclipse.jetty:jetty-runner:9.2.0.v20140526') {
+        exclude module : 'javax.servlet-api'
+    }
+
+}
+
+task copyJetty (type : Copy) {
+    into "$buildDir/jetty"
+    from configurations.providedCompile
 }
 
 task wrapper(type: Wrapper) {
@@ -64,4 +75,5 @@ task copyToLib << {
     }
 }
 
-task stage(dependsOn: ["clean", "copyToLib"])
+task stage(dependsOn: ["clean", "copyJetty"])
+stage.finalizedBy build

@@ -63,6 +63,37 @@
     <orderEntry type="library" exported="" name="Gradle: spring-tx-4.1.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-aspects-4.1.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.8.5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-runner-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-plus-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-annotations-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-jaas-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: websocket-server-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-jndi-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-jsp-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-webapp-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.annotation-api-1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: asm-5.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: asm-commons-5.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-security-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: websocket-common-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: websocket-client-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: websocket-servlet-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-servlet-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-http-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-util-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-schemas-3.1.M0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.servlet.jsp-api-2.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.servlet.jsp-2.3.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.servlet.jsp.jstl-1.2.0.v201105211821" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.servlet.jsp.jstl-1.2.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.eclipse.jdt.core-3.8.2.v20130121" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-xml-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: asm-tree-5.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-server-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: websocket-api-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: jetty-io-9.2.0.v20140526" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.el-3.0.1-b08" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.servlet-api-3.1.0" level="project" />
   </component>
 </module>
 
