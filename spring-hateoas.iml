@@ -63,6 +63,14 @@
     <orderEntry type="library" exported="" name="Gradle: spring-tx-4.1.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-aspects-4.1.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.8.5" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-servlet-7.5.3.v20111011" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: servlet-api-2.5" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-security-7.5.3.v20111011" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-server-7.5.3.v20111011" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-continuation-7.5.3.v20111011" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-http-7.5.3.v20111011" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-io-7.5.3.v20111011" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-util-7.5.3.v20111011" level="project" />
   </component>
 </module>
 
