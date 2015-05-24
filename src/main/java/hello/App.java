@@ -22,7 +22,7 @@ public class App
     //public static JFormattedTextField numPeriodsField = new JFormattedTextField();
     //public static JFormattedTextField textNameField = new JFormattedTextField();
     //public  static JTextArea editTextArea2 = new JTextArea(myString2);
-    public final static ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Module.xml");;
+    public final static ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Module.xml");
     public static void main( String[] args )
     {
         SpringApplication.run(Application.class, args);

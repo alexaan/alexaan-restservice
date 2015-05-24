@@ -12,8 +12,9 @@
 
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
-        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
-        <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+
+        <property name="username" value="alexaan" />
+        <property name="password" value="nomadjukebox3" />
     </bean>
 
 </beans>
