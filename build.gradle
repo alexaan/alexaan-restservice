@@ -16,7 +16,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
-mainClassName = 'src.java.hello.App'
+mainClassName = 'hello.App'
 
 jar {
     baseName = 'gs-rest-hateoas'
