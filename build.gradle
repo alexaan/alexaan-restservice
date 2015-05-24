@@ -15,6 +15,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'jetty'
 
 mainClassName = 'src.java.hello.App'
 
@@ -52,6 +53,11 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
 
+task copyJetty (type : Copy) {
+    into "$buildDir/jetty"
+    from configurations.providedCompile
+}
+
 task copyToLib << {
     copy {
         from configurations.runtimeOnly.copy().setTransitive(false)
@@ -64,4 +70,7 @@ task copyToLib << {
     }
 }
 
-task stage(dependsOn: ["clean", "copyToLib"])
+//task stage(dependsOn: ["clean", "war", "copyToLib"])
+
+task stage (dependsOn : ['clean', 'copyJetty'])
+stage.finalizedBy build
