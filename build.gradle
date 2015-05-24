@@ -29,8 +29,8 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+//sourceCompatibility = 1.7
+//targetCompatibility = 1.7
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
@@ -47,9 +47,9 @@ dependencies {
     // ->>runtimeOnly "org.mortbay.jetty:jetty-runner:8.1.1.v20120215"
     // monitoring on Heroku
     // ->>runtimeOnly "com.newrelic.agent.java:newrelic-agent:2.18.0"
-    compile 'org.eclipse.jetty:jetty-servlet:7.5.3.v20111011'
-    compile 'javax.servlet:servlet-api:2.5'
-    //compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'org.eclipse.jetty:jetty-servlets:9.3.0.M2'
+    //compile 'javax.servlet:servlet-api:2.5'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
     //providedCompile ('org.eclipse.jetty:jetty-runner:9.2.0.v20140526') {
     //    exclude module : 'javax.servlet-api'
     //}
@@ -81,4 +81,5 @@ task wrapper(type: Wrapper) {
 //-->task stage
 //stage.finalizedBy build
 //stage.finalizedBy build
-task stage(dependsOn: ['clean', 'installApp'])
+task stage(dependsOn: ['clean', 'installDist'])
+stage.finalizedBy build
