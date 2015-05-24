@@ -1,2 +1,1 @@
-web: ./build/install/app/bin/app
-
+web: java -Dserver.port=$PORT -jar build/libs/gs-rest-hateoas-0.1.0.jar
