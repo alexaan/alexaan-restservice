@@ -4,7 +4,7 @@
     <context:property-placeholder location="classpath*:META-INF/spring/*.properties"/>
     <context:spring-configured/>
     <bean class="java.net.URI" id="dbUrl">
-        <constructor-arg value="${WEB_DATABASE_URL}"/>
+        <constructor-arg value="${CLEARDB_DATABASE_URL}"/>
     </bean>
 
     <bean id="dataSource"
