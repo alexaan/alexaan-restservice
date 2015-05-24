@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+configurations {
+    runtimeOnly
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+mainClassName = 'src.java.hello.App'
+
+jar {
+    baseName = 'gs-rest-hateoas'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    compile("org.springframework.hateoas:spring-hateoas")
+    compile("org.springframework.plugin:spring-plugin-core:1.1.0.RELEASE")
+    compile("com.jayway.jsonpath:json-path:0.9.1")
+    compile("mysql:mysql-connector-java:5.1.13")
+    compile("org.springframework:spring-jdbc")
+    compile("org.springframework:spring-aspects")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    // to run our App on Heroku
+    runtimeOnly "org.mortbay.jetty:jetty-runner:8.1.1.v20120215"
+    // monitoring on Heroku
+    runtimeOnly "com.newrelic.agent.java:newrelic-agent:2.18.0"
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+task copyToLib << {
+    copy {
+        from configurations.runtimeOnly.copy().setTransitive(false)
+        into "$buildDir/libs"
+        rename { name ->
+            def artifacts = configurations.runtimeOnly.resolvedConfiguration.resolvedArtifacts
+            def artifact = artifacts.find { it.file.name == name }
+            "${artifact.name}.${artifact.extension}"
+        }
+    }
+}
+
+task stage(dependsOn: ["clean", "war", "copyToLib"])
