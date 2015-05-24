@@ -28,9 +28,6 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("com.fasterxml.jackson.core:jackson-databind")
@@ -41,6 +38,11 @@ dependencies {
     compile("org.springframework:spring-jdbc")
     compile("org.springframework:spring-aspects")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile ('org.eclipse.jetty:jetty-runner:9.2.0.v20140526') {
+        exclude module : 'javax.servlet-api'
+    }
 
     // to run our App on Heroku
     runtimeOnly "org.mortbay.jetty:jetty-runner:8.1.1.v20120215"
