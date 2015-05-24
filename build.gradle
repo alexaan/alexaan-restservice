@@ -75,4 +75,6 @@ task wrapper(type: Wrapper) {
 //}
 
 //task stage(dependsOn: ["clean", "copyJetty"])
+task stage
+stage.finalizedBy build
 //stage.finalizedBy build
