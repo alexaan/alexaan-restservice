@@ -46,8 +46,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6760564" vertical-offset="561" max-vertical-offset="1258">
-              <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.64084506" vertical-offset="940" max-vertical-offset="1224">
+              <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -381,7 +381,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="2864905757372" />
+        <entry key="$PROJECT_DIR$" value="2864908850170" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -396,10 +396,6 @@
                       <ExternalModuleBuildClasspathPojo>
                         <option name="entries">
                           <list>
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.1.6.RELEASE/a09f8d7c0c2b861f0d9e256de451c78b55aec0cf/spring-core-4.1.6.RELEASE-sources.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.1.6.RELEASE/e2f486124d5dea2d91a9c2ea7d4456bc343ca2cc/spring-core-4.1.6.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.2.3.RELEASE/f99ddef9928e000d34eadde6cc0084464708f02e/spring-boot-starter-web-1.2.3.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.2.3.RELEASE/d4a2ea5c2dfa465054d9b2675ff7794d8d97f311/spring-boot-starter-web-1.2.3.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.4.5/de094907ce9aab8509792f5587c5c890ea2384d6/jackson-databind-2.4.5-sources.jar" />
@@ -421,6 +417,8 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.2.3.RELEASE/32de443f4e43ceee62c3e1e855fee076fec546b3/spring-boot-starter-tomcat-1.2.3.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-validator/5.1.3.Final/2bb7969a7c05ddd8474873981321cce43c688eb9/hibernate-validator-5.1.3.Final-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-validator/5.1.3.Final/334d46a93cf095160ce06d8382594b904933c808/hibernate-validator-5.1.3.Final.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.1.6.RELEASE/a09f8d7c0c2b861f0d9e256de451c78b55aec0cf/spring-core-4.1.6.RELEASE-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.1.6.RELEASE/e2f486124d5dea2d91a9c2ea7d4456bc343ca2cc/spring-core-4.1.6.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.1.6.RELEASE/38eefb4626db79c8939b58da803476864028f9d0/spring-web-4.1.6.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.1.6.RELEASE/960101b25d0ec6f45d550bf92c00de8c6a584e6a/spring-web-4.1.6.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.1.6.RELEASE/74e437c914201b70db2022052bc35611ad4beb9a/spring-webmvc-4.1.6.RELEASE-sources.jar" />
@@ -469,6 +467,8 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.3/d90276fff414f06cb375f2057f6778cd63c6082f/logback-classic-1.1.3.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.3/a69d9a62a693f391ad19d8ac19fa85a7a60cbc7c/logback-core-1.1.3-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.3/e3c02049f2dbbc764681b40094ecf0dcbc99b157/logback-core-1.1.3.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.1.6.RELEASE/ee7d75b5f8328cb46f965fd4f07b12691bedea6a/spring-expression-4.1.6.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.1.6.RELEASE/8bf70887c2c883a6f6e552dbe46eec35c07adf6a/spring-expression-4.1.6.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.1.6.RELEASE/708d354f5210f253d345b3cb65013410cc770554/spring-beans-4.1.6.RELEASE-sources.jar" />
@@ -634,13 +634,13 @@
         <option value="$PROJECT_DIR$/src/main/java/hello/CustomerDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/hello/HerokuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/hello/FormattedChangeListener.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/hello/App.java" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/src/main/resources/Spring-Datasource.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/Spring-Customer.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/Spring-Module.xml" />
         <option value="$PROJECT_DIR$/system.properties" />
+        <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
   </component>
@@ -1533,8 +1533,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6760564" vertical-offset="561" max-vertical-offset="1258">
-          <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.64084506" vertical-offset="940" max-vertical-offset="1224">
+          <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
           <folding />
         </state>
       </provider>
