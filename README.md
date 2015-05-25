@@ -1,11 +1,17 @@
 # alexaan-restservice
-(work in progress) 
+ 
+> Spring REST service. Running live at https://alexaan-restservice.herokuapp.com
 
-Spring/Hibernate REST service
+*Early work in progress*
 
-Running live at https://alexaan-restservice.herokuapp.com
 
-# Usage
+## Technologies
+
+Spring, Gradle, JSON, Heroku, ClearDB
+
+
+
+## Usage
 
 https://alexaan-restservice.herokuapp.com/heroku?id=1 --> get Customer from DB with id 1 as JSON
 
