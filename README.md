@@ -1,6 +1,6 @@
 # alexaan-restservice
  
-> Spring REST service. Running live at https://alexaan-restservice.herokuapp.com
+Spring REST service. Running live at https://alexaan-restservice.herokuapp.com
 
 *Early work in progress*
 
