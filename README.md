@@ -14,13 +14,12 @@ Spring, Gradle, JSON, Heroku, ClearDB
 ## Usage
 
 - **Get customer by id**: `https://alexaan-restservice.herokuapp.com/?id=[cid]` returns Customer from DB with id=`[cid]` as JSON
-- ** Get customer(s) by name**: `https://alexaan-restservice.herokuapp.com/?name=[cname]` - returns Customer from DB with `[cname]` as part of their name as JSON
-- `https://alexaan-restservice.herokuapp.com/?age=[cage]` - get Customer from DB with age=`[cage]` as JSON
-- - `https://alexaan-restservice.herokuapp.com/?name=[cname]` - get Customer from DB with name=`[cname]` as JSON
+- ** Get customer(s) by name**: `https://alexaan-restservice.herokuapp.com/?name=[cname]` returns Customer(s) from DB with `[cname]` as part of their name as JSON
+- **Get customer(s) by age**: `https://alexaan-restservice.herokuapp.com/?age=[cage]` returns Customer(s) from DB with age=`[cage]` as JSON
 
-- `https://alexaan-restservice.herokuapp.com/heroku/getall` - get all registered Customers from DB as JSON
+- **Get all customers**: `https://alexaan-restservice.herokuapp.com/heroku/getall` returns all registered Customers from DB as JSON
 
-- `curl --data "id=[cid]&name=[cname]&age=[cage]" https:alexaan-restservice.herokuapp.com/heroku` - post a new Customer with id=`[cid]`, name=`[cname]`, age=`[cage]` to the application's database
+- **Post customer**: `curl --data "id=[cid]&name=[cname]&age=[cage]" https:alexaan-restservice.herokuapp.com` posts a new Customer with id=`[cid]`, name=`[cname]`, age=`[cage]` to the application's database
 
 ##ClearDB for Heroku
 
