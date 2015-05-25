@@ -17,7 +17,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
-mainClassName = 'hello.App'
+mainClassName = 'alexaan.App'
 applicationName = "app"
 
 jar {
