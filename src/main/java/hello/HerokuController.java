@@ -37,7 +37,6 @@ public class HerokuController {
         Greeting greeting = new Greeting(String.format(NEWTEMPLATE, c.custId, c.name, c.age));
         CustomerResourceSupport crs = new CustomerResourceSupport(c.custId, c.name, c.age);
         //greeting.add(linkTo(methodOn(GreetingController.class).greeting(name)).withSelfRel());
-        //System.out.println("s1ck "+c.name+" cack "+c.age+ " ass "+ c.custId);
         //System.out.println("name: "+name);
         //System.out.println("id: "+id);
         String returnstring = new String (String.format(NEWTEMPLATE, c.custId, c.name, c.age));
