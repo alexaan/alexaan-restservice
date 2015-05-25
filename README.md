@@ -13,11 +13,17 @@ Spring, Gradle, JSON, Heroku, ClearDB
 
 ## Usage
 
-- `https://alexaan-restservice.herokuapp.com/heroku?id=[cid]` - get Customer from DB with id=`[cid]` as JSON
+The application serves data from a SQL database in JSON format. Returned Customer entries will be sorted by `[cid]` (customer id). 
 
-- `https://alexaan-restservice.herokuapp.com/heroku/getall` - get all registered Customers from DB as JSON
+- **Get customer by id**: `https://alexaan-restservice.herokuapp.com/?id=[cid]` returns Customer from DB with id=`[cid]` as JSON
+- ** Get customer(s) by name**: `https://alexaan-restservice.herokuapp.com/?name=[cname]` returns Customer(s) from DB with `[cname]` as part of their name as JSON
+- **Get customer(s) by age**: `https://alexaan-restservice.herokuapp.com/?age=[cage]` returns Customer(s) from DB with age=`[cage]` as JSON
+ 
+- **Get customer(s) by combining request parameters**: `https://alexaan-restservice.herokuapp.com/?id=[cid]&name=[cname]&age=[cage]` returns Customer(s) from DB that match atleast one of the request parameters as JSON. Works with any combination of `[cid]`, `[cname]`, `[cage]`.
 
-- `curl --data "id=[cid]&name=[cname]&age=[cage]" https:alexaan-restservice.herokuapp.com/heroku` - post a new Customer with id=`[cid]`, name=`[cname]`, age=`[cage]` to the application's database
+- **Get all customers**: `https://alexaan-restservice.herokuapp.com/heroku/getall` returns all registered Customers from DB as JSON
+
+- **Post customer**: `curl --data "id=[cid]&name=[cname]&age=[cage]" https:alexaan-restservice.herokuapp.com` posts a new Customer with id=`[cid]`, name=`[cname]`, age=`[cage]` to the application's database
 
 ##ClearDB for Heroku
 
