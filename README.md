@@ -13,7 +13,7 @@ Spring, Gradle, JSON, Heroku, ClearDB
 
 ## Usage
 
-- **Get customer by id**: `https://alexaan-restservice.herokuapp.com/?id=[cid]` - returns Customer from DB with id=`[cid]` as JSON
+- **Get customer by id**: `https://alexaan-restservice.herokuapp.com/?id=[cid]` returns Customer from DB with id=`[cid]` as JSON
 - ** Get customer(s) by name**: `https://alexaan-restservice.herokuapp.com/?name=[cname]` - returns Customer from DB with `[cname]` as part of their name as JSON
 - `https://alexaan-restservice.herokuapp.com/?age=[cage]` - get Customer from DB with age=`[cage]` as JSON
 - - `https://alexaan-restservice.herokuapp.com/?name=[cname]` - get Customer from DB with name=`[cname]` as JSON
