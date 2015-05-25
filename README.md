@@ -44,7 +44,7 @@ Based on local database dump file
 - `heroku config | grep CLEARDB_DATABASE_URL`
 
  - Should return something like `mysql://[username]:[password]@[databasename].cleardb.net/[tablename]?reconnect=true`
-- Set up the connection in MySQL Workbench (see picture). Be sure to store your [password] to the vault.
+- Set up the connection in MySQL Workbench (see picture). Be sure to store your `[password]` to the vault.
 
  ![Workbench ClearDB SSL Connection](http://i.imgur.com/DODlX5o.png)
 
