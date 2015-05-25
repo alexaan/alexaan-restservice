@@ -4,17 +4,18 @@
     <context:property-placeholder location="classpath*:META-INF/spring/*.properties"/>
     <context:spring-configured/>
     <bean class="java.net.URI" id="dbUrl">
-        <constructor-arg value="${WEB_DATABASE_URL}"/>
+        <constructor-arg value="${CLEARDB_DATABASE_URL}"/>
     </bean>
 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+        <!--<property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>-->
+        <property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost(+ @dbUrl.getPath() }"/>
 
-        <property name="username" value="alexaan" />
-        <property name="password" value="nomadjukebox3" />
+        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }" />
+        <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }" />
     </bean>
 
 </beans>
