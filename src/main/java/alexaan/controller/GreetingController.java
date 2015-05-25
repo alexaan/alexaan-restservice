@@ -1,7 +1,8 @@
-package alexaan;
+package alexaan.controller;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
+import alexaan.Greeting;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,7 @@
-package alexaan;
+package alexaan.controller;
 
+import alexaan.*;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +28,7 @@ public class HerokuController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public HttpEntity<List<CustomerResourceSupport>> greeting(
+    public HttpEntity<List<CustomerResourceSupport>> getCustomers(
             @RequestParam(value = "id", required = false, defaultValue="0") int id,
             @RequestParam(value = "age", required = false, defaultValue="0") int age,
             @RequestParam(value = "name", required = false, defaultValue = "Placeholder") String name)
@@ -36,7 +38,7 @@ public class HerokuController {
         if(id != 0)
         {
             Customer c = App.getFromDB(id);
-            CustomerResourceSupport crs = new CustomerResourceSupport(c.custId, c.name, c.age);
+            CustomerResourceSupport crs = new CustomerResourceSupport(c.getCustId(), c.getName(), c.getAge());
             //crsl = new ArrayList<CustomerResourceSupport>();
             crsl.add(crs);
             //return new ResponseEntity<List<CustomerResourceSupport>>(crsl, HttpStatus.OK);
@@ -47,7 +49,7 @@ public class HerokuController {
             for(Customer c : clm){
                 //System.out.println("sup: "+c.getName());
                 boolean customerAlreadyInResultSet = false;
-                CustomerResourceSupport crs = new CustomerResourceSupport(c.custId, c.name, c.age);
+                CustomerResourceSupport crs = new CustomerResourceSupport(c.getCustId(), c.getName(), c.getAge());
                     for(CustomerResourceSupport cr : crsl){
                         if(cr.getCId() == crs.getCId()){
                             //System.out.println("name alreadyin "+name);
@@ -58,7 +60,6 @@ public class HerokuController {
                             }
                     }
                 if(customerAlreadyInResultSet == false){
-                    System.out.println("adding "+crs.getName());
                     crsl.add(crs);
                 }
             }
@@ -68,7 +69,7 @@ public class HerokuController {
         if(age != 0) {
             List<Customer> clm = App.getAllCustomersWithAge(age);
             for(Customer c : clm){
-                CustomerResourceSupport crs = new CustomerResourceSupport(c.custId, c.name, c.age);
+                CustomerResourceSupport crs = new CustomerResourceSupport(c.getCustId(), c.getName(), c.getAge());
                 boolean customerAlreadyInResultSet = false;
                 for(CustomerResourceSupport cr : crsl){
                     if(cr.getCId() == crs.getCId()){
@@ -105,7 +106,7 @@ public class HerokuController {
         List<Customer> clm = App.getAllCustomers();
         List<CustomerResourceSupport> crsl = new ArrayList<CustomerResourceSupport>();;
         for(Customer c : clm){
-            CustomerResourceSupport crs = new CustomerResourceSupport(c.custId, c.name, c.age);
+            CustomerResourceSupport crs = new CustomerResourceSupport(c.getCustId(), c.getName(), c.getAge());
             System.out.println("adding this to crsl: "+crs.getName());
             crsl.add(crs);
         }
@@ -115,13 +116,13 @@ public class HerokuController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public HttpEntity<Greeting> greetings(
+    public HttpEntity<Greeting> postCustomer(
             @RequestParam(value = "name", required = true) String name,
             @RequestParam(value = "id", required = true) int id,
             @RequestParam(value = "age", required = true) int age)  {
 
         Greeting greeting = new Greeting(String.format(TEMPLATE, name));
-        greeting.add(linkTo(methodOn(GreetingController.class).greeting(name)).withSelfRel());
+        greeting.add(ControllerLinkBuilder.linkTo(methodOn(GreetingController.class).greeting(name)).withSelfRel());
 
         App.postToDB(name, id, age);
         System.out.println("name: "+name);

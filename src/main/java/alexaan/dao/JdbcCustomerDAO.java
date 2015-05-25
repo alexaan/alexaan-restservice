@@ -1,5 +1,6 @@
-package alexaan;
+package alexaan.dao;
 
+import alexaan.Customer;
 import alexaan.dao.CustomerDAO;
 
 import javax.sql.DataSource;
