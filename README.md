@@ -31,9 +31,9 @@ Based on local database dump file
 
  - Should return something like `mysql://[username]:[password]@[databasename].cleardb.net/[tablename]?reconnect=true`
 
-- `mysql -u [username] -h [databasename].cleardb.net -p [tablename] < [path to your local database dump]
+- `mysql -u [username] -h [databasename].cleardb.net -p [tablename] < [path to your local database dump]`
 
-- use [password] when prompted for a password
+- use `[password]` when prompted for a password
 - push changes to your Heroku App via git
  - `git add .`
  - `git commit -m '[your message]'`
