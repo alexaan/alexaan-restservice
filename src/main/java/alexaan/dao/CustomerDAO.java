@@ -1,6 +1,6 @@
 package alexaan.dao;
 
-import alexaan.Customer;
+import alexaan.resourcesupport.CustomerResourceSupport;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface CustomerDAO {
 
-    public void insert(Customer customer);
-    public Customer findByCustomerId(int custId);
-    public List<Customer> findAllCustomers();
-    public List<Customer> findAllCustomersWithName(String name);
-    public List<Customer> findAllCustomersWithAge(int age);
+    public void insert(CustomerResourceSupport crs);
+    public CustomerResourceSupport findByCustomerId(int custId);
+    public List<CustomerResourceSupport> findAllCustomers();
+    public List<CustomerResourceSupport> findAllCustomersWithName(String name);
+    public List<CustomerResourceSupport> findAllCustomersWithAge(int age);
 }

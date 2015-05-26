@@ -1,7 +1,6 @@
 package alexaan.dao;
 
-import alexaan.Customer;
-import alexaan.dao.CustomerDAO;
+import alexaan.resourcesupport.CustomerResourceSupport;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -16,6 +15,8 @@ import java.util.List;
  */
 public class JdbcCustomerDAO implements CustomerDAO {
 
+    private DataSource dataSource;
+
     public DataSource getDataSource() {
         return dataSource;
     }
@@ -24,13 +25,10 @@ public class JdbcCustomerDAO implements CustomerDAO {
         this.dataSource = dataSource;
     }
 
-    private DataSource dataSource;
 
-    public void setDatasource(DataSource dataSource){
-        this.dataSource = dataSource;
-    }
 
-    public void insert(Customer customer){
+
+    public void insert(CustomerResourceSupport crs){
         String sql = "INSERT INTO CUSTOMER " +
                 "(CUST_ID, NAME, AGE) VALUES (?, ?, ?)";
         Connection conn = null;
@@ -39,9 +37,9 @@ public class JdbcCustomerDAO implements CustomerDAO {
         try{
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, customer.getCustId());
-            ps.setString(2, customer.getName());
-            ps.setInt(3, customer.getAge());
+            ps.setInt(1, crs.getCId());
+            ps.setString(2, crs.getName());
+            ps.setInt(3, crs.getAge());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e){
@@ -57,17 +55,17 @@ public class JdbcCustomerDAO implements CustomerDAO {
     }
 
 
-    public Customer findByCustomerId(int custId){
+    public CustomerResourceSupport findByCustomerId(int custId){
         String sql = "SELECT * FROM CUSTOMER WHERE CUST_ID = ?";
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, custId);
-            Customer customer = null;
+            CustomerResourceSupport crs = null;
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
-                customer = new Customer(
+                crs = new CustomerResourceSupport(
                         rs.getInt("CUST_ID"),
                         rs.getString("NAME"),
                         rs.getInt("Age")
@@ -75,7 +73,7 @@ public class JdbcCustomerDAO implements CustomerDAO {
             }
             rs.close();
             ps.close();
-            return customer;
+            return crs;
         } catch(SQLException e){ throw new RuntimeException(e);}
         finally {
             if(conn != null){
@@ -90,19 +88,19 @@ public class JdbcCustomerDAO implements CustomerDAO {
     }
 
     @Override
-    public List<Customer> findAllCustomers() {
+    public List<CustomerResourceSupport> findAllCustomers() {
         String sql = "SELECT * FROM CUSTOMER";
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             //ps.setInt(1, custId);
-            Customer customer = null;
-            Customer[] cl = new Customer[]{};
-            List<Customer> clm = new ArrayList<Customer>();
+            CustomerResourceSupport customer = null;
+            CustomerResourceSupport[] cl = new CustomerResourceSupport[]{};
+            List<CustomerResourceSupport> clm = new ArrayList<CustomerResourceSupport>();
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
-                customer = new Customer(
+                customer = new CustomerResourceSupport(
                         rs.getInt("CUST_ID"),
                         rs.getString("NAME"),
                         rs.getInt("Age")
@@ -125,18 +123,18 @@ public class JdbcCustomerDAO implements CustomerDAO {
     }
 
     @Override
-    public List<Customer> findAllCustomersWithName(String name) {
+    public List<CustomerResourceSupport> findAllCustomersWithName(String name) {
         String sql = "SELECT * FROM CUSTOMER WHERE NAME LIKE '%"+name+"%'";
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             //ps.setString(1, "'%al%'");
-            Customer customer = null;
+            CustomerResourceSupport customer = null;
             ResultSet rs = ps.executeQuery();
-            List<Customer> clm = new ArrayList<Customer>();
+            List<CustomerResourceSupport> clm = new ArrayList<CustomerResourceSupport>();
             while(rs.next()) {
-                customer = new Customer(
+                customer = new CustomerResourceSupport(
                         rs.getInt("CUST_ID"),
                         rs.getString("NAME"),
                         rs.getInt("Age")
@@ -160,18 +158,18 @@ public class JdbcCustomerDAO implements CustomerDAO {
     }
 
     @Override
-    public List<Customer> findAllCustomersWithAge(int age) {
+    public List<CustomerResourceSupport> findAllCustomersWithAge(int age) {
         String sql = "SELECT * FROM CUSTOMER WHERE AGE = ?";
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, age);
-            Customer customer = null;
+            CustomerResourceSupport customer = null;
             ResultSet rs = ps.executeQuery();
-            List<Customer> clm = new ArrayList<Customer>();
+            List<CustomerResourceSupport> clm = new ArrayList<CustomerResourceSupport>();
             while(rs.next()) {
-                customer = new Customer(
+                customer = new CustomerResourceSupport(
                         rs.getInt("CUST_ID"),
                         rs.getString("NAME"),
                         rs.getInt("Age")
