@@ -41,45 +41,15 @@ dependencies {
     compile("mysql:mysql-connector-java:5.1.13")
     compile("org.springframework:spring-jdbc")
     compile("org.springframework:spring-aspects")
+    compile('org.eclipse.jetty:jetty-servlets:9.3.0.M2')
+    compile('javax.servlet:javax.servlet-api:3.1.0')
     testCompile("org.springframework.boot:spring-boot-starter-test")
 
-    // to run our App on Heroku
-    // ->>runtimeOnly "org.mortbay.jetty:jetty-runner:8.1.1.v20120215"
-    // monitoring on Heroku
-    // ->>runtimeOnly "com.newrelic.agent.java:newrelic-agent:2.18.0"
-    compile 'org.eclipse.jetty:jetty-servlets:9.3.0.M2'
-    //compile 'javax.servlet:servlet-api:2.5'
-    compile 'javax.servlet:javax.servlet-api:3.1.0'
-    //providedCompile ('org.eclipse.jetty:jetty-runner:9.2.0.v20140526') {
-    //    exclude module : 'javax.servlet-api'
-    //}
-
 }
-
-//task copyJetty (type : Copy) {
-//    into "$buildDir/jetty"
-//    from configurations.providedCompile
-//}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
 
-//task copyToLib << {
-//    copy {
-//        from configurations.runtimeOnly.copy().setTransitive(false)
-//        into "$buildDir/libs"
-//        rename { name ->
-//            def artifacts = configurations.runtimeOnly.resolvedConfiguration.resolvedArtifacts
-//            def artifact = artifacts.find { it.file.name == name }
-//            "${artifact.name}.${artifact.extension}"
-//        }
-//    }
-//}
-
-//task stage(dependsOn: ["clean", "copyJetty"])
-//-->task stage
-//stage.finalizedBy build
-//stage.finalizedBy build
 task stage(dependsOn: ['clean', 'installDist'])
 stage.finalizedBy build
