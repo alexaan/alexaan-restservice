@@ -23,7 +23,7 @@ The application serves data from a SQL database in JSON format. Returned Custome
 
 - **Get all customers**: `https://alexaan-restservice.herokuapp.com/heroku/getall` returns all registered Customers from DB as JSON
 
-- **Post customer**: `curl --data "id=[cid]&name=[cname]&age=[cage]" https:alexaan-restservice.herokuapp.com` posts a new Customer with id=`[cid]`, name=`[cname]`, age=`[cage]` to the application's database
+- **Post customer**: `curl --data "id=[cid]&name=[cname]&age=[cage]" https://alexaan-restservice.herokuapp.com` posts a new Customer with id=`[cid]`, name=`[cname]`, age=`[cage]` to the application's database
 
 ##ClearDB for Heroku
 
