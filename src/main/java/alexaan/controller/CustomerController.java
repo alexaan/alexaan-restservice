@@ -1,16 +1,16 @@
 package alexaan.controller;
 
 import alexaan.*;
+import alexaan.exception.IllegalArgumentsException;
+import alexaan.exception.ResourceNotFoundException;
 import alexaan.resourcesupport.CustomerResourceSupport;
+import alexaan.resourcesupport.ErrorResourceSupport;
 import alexaan.resourcesupport.PostReturnResourceSupport;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,27 +21,32 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/**")
 public class CustomerController {
 
-    private static final String TEMPLATE = "Hello, %s!";
     private static final String ADDCUSTOMERTEMPLATE = "Successfully registered customer with id %s, name %s, age %s.";
+
+    private static final String NOCUSTOMERSFOUNDTEMPLATE = "No customers found for parameters id= %s name= %s age = %s";
+    private static final String NOURLVARSPECIFIEDTEMPLATE = "Atleast one of the url parameters id, name or age are required to GET data. Use /getall to GET all registered data.";
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public HttpEntity<List<CustomerResourceSupport>> getCustomers(
-            @RequestParam(value = "id", required = false) Integer id,//, defaultValue="0"
-            @RequestParam(value = "age", required = false) Integer age, //defaultValue="0"
-            @RequestParam(value = "name", required = false) String name) //, defaultValue = "Placeholder"
+    public HttpEntity getCustomers(
+            @RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "age", required = false) Integer age,
+            @RequestParam(value = "name", required = false) String name)
     {
-        List<CustomerResourceSupport> crsl = new ArrayList<CustomerResourceSupport>();
+        if(id==null&&name==null&&age==null) throw new IllegalArgumentsException(NOURLVARSPECIFIEDTEMPLATE);
+        List<CustomerResourceSupport> crsl = new ArrayList<>();
 
         if(id!=null)
         {
             CustomerResourceSupport c = App.getCustomerWithId(id);
-            CustomerResourceSupport crs = new CustomerResourceSupport(c.getCId(), c.getName(), c.getAge());
-            crs.add(linkTo(methodOn(CustomerController.class).getCustomers(id, age, name)).withSelfRel());
-            crsl.add(crs);
+            if(c!=null) {
+                CustomerResourceSupport crs = new CustomerResourceSupport(c.getCId(), c.getName(), c.getAge());
+                crs.add(linkTo(methodOn(CustomerController.class).getCustomers(id, age, name)).withSelfRel());
+                crsl.add(crs);
+            }
         }
         if(name!=null){
             List<CustomerResourceSupport> clm = App.getAllCustomersWithName(name);
@@ -83,20 +88,27 @@ public class CustomerController {
             }
         });
 
-        return new ResponseEntity<List<CustomerResourceSupport>>(crsl, HttpStatus.OK);
+        if(crsl.isEmpty()) {
+            throw new ResourceNotFoundException(String.format(NOCUSTOMERSFOUNDTEMPLATE, id, age, name));
+        }
+        return new ResponseEntity<>(crsl, HttpStatus.OK);
+
     }
 
     @RequestMapping("/getall")
     @ResponseBody
     public HttpEntity<List<CustomerResourceSupport>> getAll (){
         List<CustomerResourceSupport> clm = App.getAllCustomers();
-        List<CustomerResourceSupport> crsl = new ArrayList<CustomerResourceSupport>();;
+        List<CustomerResourceSupport> crsl = new ArrayList<>();
         for(CustomerResourceSupport c : clm){
             CustomerResourceSupport crs = new CustomerResourceSupport(c.getCId(), c.getName(), c.getAge());
             crs.add(linkTo(methodOn(CustomerController.class).getAll()).withSelfRel());
             crsl.add(crs);
         }
-        return new ResponseEntity<List<CustomerResourceSupport>>(crsl, HttpStatus.OK);
+
+        return new ResponseEntity<>(crsl, HttpStatus.OK);
+
+
     }
 
 
@@ -111,6 +123,6 @@ public class CustomerController {
         pr.add(linkTo(methodOn(CustomerController.class).postCustomer(name, id, age)).withSelfRel());
         App.postNewCustomerToDB(name, id, age);
 
-        return new ResponseEntity<PostReturnResourceSupport>(pr, HttpStatus.OK);
+        return new ResponseEntity<>(pr, HttpStatus.OK);
     }
-}
+    }

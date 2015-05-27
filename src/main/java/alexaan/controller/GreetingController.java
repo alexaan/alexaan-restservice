@@ -24,6 +24,6 @@ public class GreetingController {
         Greeting greeting = new Greeting(String.format(TEMPLATE, name));
         greeting.add(linkTo(methodOn(GreetingController.class).greeting(name)).withSelfRel());
 
-        return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
+        return new ResponseEntity<>(greeting, HttpStatus.OK);
     }
 }

@@ -143,7 +143,6 @@ public class JdbcCustomerDAO implements CustomerDAO {
             }
             rs.close();
             ps.close();
-            //return customer;
             return clm;
         } catch(SQLException e){ throw new RuntimeException(e);}
         finally {
@@ -178,7 +177,6 @@ public class JdbcCustomerDAO implements CustomerDAO {
             }
             rs.close();
             ps.close();
-            //return customer;
             return clm;
         } catch(SQLException e){ throw new RuntimeException(e);}
         finally {
