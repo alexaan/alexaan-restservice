@@ -1,34 +1,45 @@
 package alexaan.controller;
 
 import alexaan.*;
-import alexaan.exception.IllegalArgumentsException;
-import alexaan.exception.ResourceNotFoundException;
+import alexaan.exception.*;
 import alexaan.resourcesupport.CustomerResourceSupport;
-import alexaan.resourcesupport.ErrorResourceSupport;
 import alexaan.resourcesupport.PostReturnResourceSupport;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
+import java.util.*;
+
+
+/**
+ * Controller responsible for handling REST communication about Customer objects between client and DB
+ * @see alexaan.controller.GlobalControllerExceptionHandler
+ * @see alexaan.resourcesupport.CustomerResourceSupport
+ */
 @Controller
 @RequestMapping("/**")
 public class CustomerController {
 
     private static final String ADDCUSTOMERTEMPLATE = "Successfully registered customer with id %s, name %s, age %s.";
-
     private static final String NOCUSTOMERSFOUNDTEMPLATE = "No customers found for parameters id= %s name= %s age = %s";
+    private static final String GETALL_NOCUSTOMERSFOUNDTEMPLATE = "No customers found in the database";
     private static final String NOURLVARSPECIFIEDTEMPLATE = "Atleast one of the url parameters id, name or age are required to GET data. Use /getall to GET all registered data.";
 
+
+    /**
+     * Get Customer(s) from DB based on parameters
+     * @param id Corresponds with DB table Customer column CUST_ID
+     * @param age Corresponds with DB table Customer column AGE
+     * @param name Corresponds with DB table Customer column NAME
+     * @return HttpEntity containing found Customers in JSON format and HttpStatus code
+     * @throws alexaan.exception.IllegalArgumentsException
+     * @throws alexaan.exception.ResourceNotFoundException
+     */
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public HttpEntity getCustomers(
@@ -37,18 +48,18 @@ public class CustomerController {
             @RequestParam(value = "name", required = false) String name)
     {
         if(id==null&&name==null&&age==null) throw new IllegalArgumentsException(NOURLVARSPECIFIEDTEMPLATE);
+
         List<CustomerResourceSupport> crsl = new ArrayList<>();
 
-        if(id!=null)
-        {
+        if(id!=null){//get a Customer based on id
             CustomerResourceSupport c = App.getCustomerWithId(id);
-            if(c!=null) {
+            if(c!=null){
                 CustomerResourceSupport crs = new CustomerResourceSupport(c.getCId(), c.getName(), c.getAge());
                 crs.add(linkTo(methodOn(CustomerController.class).getCustomers(id, age, name)).withSelfRel());
                 crsl.add(crs);
             }
         }
-        if(name!=null){
+        if(name!=null){//get Customer(s) based on part of their name
             List<CustomerResourceSupport> clm = App.getAllCustomersWithName(name);
             for(CustomerResourceSupport c : clm){
                 boolean customerAlreadyInResultSet = false;
@@ -64,7 +75,7 @@ public class CustomerController {
                 }
             }
         }
-        if(age!=null) {
+        if(age!=null) {//get Customer(s) based on their age
             List<CustomerResourceSupport> clm = App.getAllCustomersWithAge(age);
             for(CustomerResourceSupport c : clm){
                 CustomerResourceSupport crs = new CustomerResourceSupport(c.getCId(), c.getName(), c.getAge());
@@ -82,19 +93,20 @@ public class CustomerController {
         }
 
         Collections.sort(crsl, new Comparator<CustomerResourceSupport>() {
-            @Override
-            public int compare(CustomerResourceSupport o1, CustomerResourceSupport o2) {
-                return Integer.compare(o1.getCId(), o2.getCId());
-            }
+            @Override public int compare(CustomerResourceSupport o1, CustomerResourceSupport o2) {return Integer.compare(o1.getCId(), o2.getCId());}
         });
 
-        if(crsl.isEmpty()) {
-            throw new ResourceNotFoundException(String.format(NOCUSTOMERSFOUNDTEMPLATE, id, age, name));
-        }
+        if(crsl.isEmpty()) {throw new ResourceNotFoundException(String.format(NOCUSTOMERSFOUNDTEMPLATE, id, age, name));}
+
         return new ResponseEntity<>(crsl, HttpStatus.OK);
 
     }
 
+    /**
+     * Get all Customers from DB
+     * @throws alexaan.exception.ResourceNotFoundException
+     * @return HttpEntity containing found Customers in JSON format and HttpStatus code
+     */
     @RequestMapping("/getall")
     @ResponseBody
     public HttpEntity<List<CustomerResourceSupport>> getAll (){
@@ -106,12 +118,20 @@ public class CustomerController {
             crsl.add(crs);
         }
 
+        if(crsl.isEmpty()) {throw new ResourceNotFoundException(GETALL_NOCUSTOMERSFOUNDTEMPLATE);}
         return new ResponseEntity<>(crsl, HttpStatus.OK);
 
 
     }
 
 
+    /**
+     * Post a Customer to DB
+     * @param name Corresponds with DB table Customer column CUST_ID
+     * @param id Corresponds with DB table Customer column CUST_ID
+     * @param age Corresponds with DB table Customer column AGE
+     * @return HttpEntity confirming that customer was added with HttpStatus code
+     */
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public HttpEntity<PostReturnResourceSupport> postCustomer(
@@ -125,4 +145,4 @@ public class CustomerController {
 
         return new ResponseEntity<>(pr, HttpStatus.OK);
     }
-    }
+}

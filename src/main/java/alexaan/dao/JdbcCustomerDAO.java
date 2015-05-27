@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * DAO class for communication between java objects and DB entries
  * Created by Alexander on 24.05.2015.
+ * @see alexaan.dao.CustomerDAO Interface Class
  */
 public class JdbcCustomerDAO implements CustomerDAO {
 
@@ -26,8 +28,11 @@ public class JdbcCustomerDAO implements CustomerDAO {
     }
 
 
-
-
+    /**
+     * Insert customer in DB
+     * @param crs Customer to be inserted
+     * @throws java.sql.SQLException
+     */
     public void insert(CustomerResourceSupport crs){
         String sql = "INSERT INTO CUSTOMER " +
                 "(CUST_ID, NAME, AGE) VALUES (?, ?, ?)";
@@ -55,6 +60,12 @@ public class JdbcCustomerDAO implements CustomerDAO {
     }
 
 
+    /**
+     * Looks up a customer in the DB
+     * @param custId Corresponds with the CUST_ID DB column of the customer to find
+     * @throws java.sql.SQLException
+     * @return CustomerResourceSupport representing the returned customer
+     */
     public CustomerResourceSupport findByCustomerId(int custId){
         String sql = "SELECT * FROM CUSTOMER WHERE CUST_ID = ?";
         Connection conn = null;
@@ -87,6 +98,11 @@ public class JdbcCustomerDAO implements CustomerDAO {
 
     }
 
+    /**
+     * Looks up all Customer in the DB
+     * @throws java.sql.SQLException
+     * @return List of type CustomerResourceSupport representing the returned Customers
+     */
     @Override
     public List<CustomerResourceSupport> findAllCustomers() {
         String sql = "SELECT * FROM CUSTOMER";
@@ -97,7 +113,7 @@ public class JdbcCustomerDAO implements CustomerDAO {
             //ps.setInt(1, custId);
             CustomerResourceSupport customer = null;
             CustomerResourceSupport[] cl = new CustomerResourceSupport[]{};
-            List<CustomerResourceSupport> clm = new ArrayList<CustomerResourceSupport>();
+            List<CustomerResourceSupport> clm = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 customer = new CustomerResourceSupport(
@@ -122,6 +138,12 @@ public class JdbcCustomerDAO implements CustomerDAO {
         }
     }
 
+    /**
+     * Looks up Customer(s) in the DB based on the name parameter
+     * @param name Corresponds with DB table Customer column NAME
+     * @throws java.sql.SQLException
+     * @return List of type CustomerResourceSupport representing the returned Customers
+     */
     @Override
     public List<CustomerResourceSupport> findAllCustomersWithName(String name) {
         String sql = "SELECT * FROM CUSTOMER WHERE NAME LIKE '%"+name+"%'";
@@ -156,6 +178,12 @@ public class JdbcCustomerDAO implements CustomerDAO {
         }
     }
 
+    /**
+     * Looks up Customer(s) in the DB based on the age parameter
+     * @param age Corresponds with DB table Customer column AGE
+     * @throws java.sql.SQLException
+     * @return List of type CustomerResourceSupport representing the returned Customers
+     */
     @Override
     public List<CustomerResourceSupport> findAllCustomersWithAge(int age) {
         String sql = "SELECT * FROM CUSTOMER WHERE AGE = ?";

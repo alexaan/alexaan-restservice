@@ -8,8 +8,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Global controller for handling application exceptions. Accessible from every other controller.
+ * @see alexaan.controller.CustomerController
+ * @see alexaan.controller.GreetingController
+ */
 @ControllerAdvice
 class GlobalControllerExceptionHandler {
+
+    /**
+     * Handles exceptions of type IllegalArgumentsException
+     * @param ex The exception that was thrown
+     * @return ResponseEntity containing error message and HttpStatus code
+     */
     @ExceptionHandler(IllegalArgumentsException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ResponseBody
@@ -20,6 +31,11 @@ class GlobalControllerExceptionHandler {
     }
 
 
+    /**
+     * Handles exceptions of type ResourceNotFoundException
+     * @param ex The exception that was thrown
+     * @return ResponseEntity containing error message and HttpStatus code
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ResponseBody
